@@ -36,18 +36,21 @@ The following code snippet illustrates the input source ::
   .code reset;
           XOR     A
           LD      (data), A
+          RET
   .end reset;
 
   .code increment;
           LD      A, (data)
           INC     A
           LD      (data), A
+          RET
   .end increment;
 
   .code decrement;
           LD      A, (data)
           DEC     A
           LD      (data), A
+          RET
   .end decrement;
 
   .end counter;
