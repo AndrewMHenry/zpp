@@ -29,28 +29,28 @@ EXAMPLE
 
 The following code snippet illustrates the input source ::
 
-  .namespace counter
+  .namespace counter;
 
-  .variable data 1
+  .variable data 1;
 
-  .routine reset
+  .routine reset;
           XOR     A
           LD      (data), A
-  .end reset
+  .end reset;
 
-  .routine increment
+  .routine increment;
           LD      A, (data)
           INC     A
           LD      (data), A
-  .end increment
+  .end increment;
 
-  .routine decrement
+  .routine decrement;
           LD      A, (data)
           DEC     A
           LD      (data), A
-  .end decrement
+  .end decrement;
 
-  .end counter
+  .end counter;
 
 INTRODUCTION
 ============
