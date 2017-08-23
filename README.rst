@@ -33,18 +33,18 @@ The following code snippet illustrates the input source ::
 
   .variable data 1;
 
-  .routine reset;
+  .code reset;
           XOR     A
           LD      (data), A
   .end reset;
 
-  .routine increment;
+  .code increment;
           LD      A, (data)
           INC     A
           LD      (data), A
   .end increment;
 
-  .routine decrement;
+  .code decrement;
           LD      A, (data)
           DEC     A
           LD      (data), A
