@@ -1,3 +1,5 @@
+``zpp`` is a Z80 assembly language preprocessor.
+
 MOTIVATION
 ==========
 
@@ -24,38 +26,3 @@ In order to get something working quickly, we begin with producing
 ``spasm``-compatible assembler source.  However, producing portable assembler
 source is a tempting future possibility.
 
-EXAMPLE
-=======
-
-The following code snippet illustrates the input source ::
-
-  .namespace counter;
-
-  .variable data 1;
-
-  .code reset;
-          XOR     A
-          LD      (data), A
-          RET
-  .end reset;
-
-  .code increment;
-          LD      A, (data)
-          INC     A
-          LD      (data), A
-          RET
-  .end increment;
-
-  .code decrement;
-          LD      A, (data)
-          DEC     A
-          LD      (data), A
-          RET
-  .end decrement;
-
-  .end counter;
-
-INTRODUCTION
-============
-
-``zpp`` is a Z80 assembly language preprocessor.
