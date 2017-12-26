@@ -1,0 +1,42 @@
+#define firstValue      3
+#define secondValue     4
+#define thirdValue      5
+#define expectedSum     firstValue + secondValue + thirdValue
+
+main:
+        PUSH    BC
+        PUSH    DE
+        PUSH    HL
+        CALL    terminalClear
+        CALL    terminalCursorHome
+        LD      HL, sumtest_string
+        CALL    terminalPrintString
+        CALL    keyboardWait
+        LD      HL, expectedSum
+        CALL    terminalPrint16Bit
+        CALL    terminalNewLine
+        LD      HL, firstValue          ; load values into registers
+        LD      DE, secondValue
+        LD      BC, thirdValue
+        LD      (first), HL             ; load registers into variables
+        LD      (second), DE
+        LD      (third), BC
+        LD      HL, (first)             ; load variables into registers
+        LD      DE, (second)
+        LD      BC, (third)
+        ADD     HL, DE                  ; print sum
+        ADD     HL, BC                  ;
+        CALL    terminalPrint16Bit      ;
+        CALL    keyboardWait
+        POP     HL
+        POP     DE
+        POP     BC
+        RET
+
+; VARIABLES
+.variable first 2
+.variable second 2
+.variable third 2
+
+sumtest_string:
+        .db "Hello!", 0
