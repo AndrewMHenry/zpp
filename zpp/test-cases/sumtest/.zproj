@@ -1,0 +1,10 @@
+: main-file sumtest.asm
+: entry-point main
+
+: library
+  screen.asm draw.asm write.asm terminal.asm
+  interrupt.asm keyboard.asm
+: resource fontSBF.asm
+
+: app-file sumtest-app.asm
+: app-name SumTest
