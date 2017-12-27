@@ -12,8 +12,8 @@ def generate_file_lines(*filenames):
                 yield line
 
 
-def process_lines(lines):
-    yield DEFINE_FORMAT.format(VARIABLE_BASE, '8478h')
+def process_lines(lines, profile=None):
+    yield DEFINE_FORMAT.format(VARIABLE_BASE, VARIABLE_BASE_VALUES[profile])
     offset = 0
     for line in lines:
         if line.startswith('.'):
@@ -33,13 +33,21 @@ def process_lines(lines):
             yield line
 
 
+PROFILES = ['ti83papp']
+VARIABLE_BASE_VALUES = {
+    'ti83papp': '8478h'
+    }
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('files', nargs='+')
     parser.add_argument('-o', '--output')
+    parser.add_argument('--profile', choices=PROFILES)
     args = parser.parse_args()
 
-    output_lines = list(process_lines(generate_file_lines(*args.files)))
+    output_lines = list(process_lines(
+        generate_file_lines(*args.files), args.profile))
     with open(args.output, 'w') as output_file:
         for output_line in output_lines:
             output_file.write(output_line)

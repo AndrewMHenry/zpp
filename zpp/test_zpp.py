@@ -64,7 +64,7 @@ def _preprocess_file(zpp_filename, asm_filename, base_dir):
     zppfile = os.path.join(base_dir, zpp_filename)
     asmfile = os.path.join(base_dir, asm_filename)
 
-    _run_process('zpp', '-o', asmfile, zppfile)
+    _run_process('zpp', '--profile', 'ti83papp', '-o', asmfile, zppfile)
 
 
 def _assemble_file(input_filename, output_filename, base_dir):
