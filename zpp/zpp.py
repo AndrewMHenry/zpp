@@ -1,8 +1,10 @@
+import os
 import argparse
 
 VARIABLE_BASE = 'data'
 DEFINE_FORMAT = '#define {} {}\n'
 VARIABLE_FORMAT = '#define {{}} {} + {{}}\n'.format(VARIABLE_BASE)
+INCLUDE_FORMAT = '#include "{}"\n'
 
 
 def generate_file_lines(*filenames):
@@ -13,6 +15,7 @@ def generate_file_lines(*filenames):
 
 
 def process_lines(lines, profile=None):
+    yield from PROFILE_GENERATORS[profile]()
     yield DEFINE_FORMAT.format(VARIABLE_BASE, VARIABLE_BASE_VALUES[profile])
     offset = 0
     for line in lines:
@@ -33,9 +36,24 @@ def process_lines(lines, profile=None):
             yield line
 
 
-PROFILES = ['ti83papp']
+PROFILES = ['minimal', 'ti83papp']
+
+def _minimal_gen():
+    yield from ()
+
+def _ti83papp_gen():
+    yield DEFINE_FORMAT.format('APP_NAME', '"Pacman  "')
+    for inc in ['ti83plus.inc', 'app.asm']:
+        yield from generate_file_lines(os.path.join(
+            os.path.dirname(__file__), inc))
+
 VARIABLE_BASE_VALUES = {
-    'ti83papp': '8478h'
+    'minimal': '0000h',
+    'ti83papp': '86ECh'
+    }
+PROFILE_GENERATORS = {
+    'minimal': _minimal_gen,
+    'ti83papp': _ti83papp_gen
     }
 
 

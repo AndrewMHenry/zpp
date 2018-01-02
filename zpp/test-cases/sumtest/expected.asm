@@ -25,9 +25,9 @@ main:
 
 ; VARIABLES
 
-#define first 8478h
-#define second 847Ah
-#define third 847Ch
+#define first 0000h
+#define second 0002h
+#define third 0004h
 
 sumtest_string:
         .db "Hello!", 0
