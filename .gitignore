@@ -1,8 +1,15 @@
-zpp.egg-info/
+# emacs backups
 *~
+
+# python build files
 zpp/__pycache__/
+zpp.egg-info/
+
+# zpp example build files
 zpp/examples/sumtest/sumtest-app.*
 zpp/examples/sumtest/sumtest.asm
+
+# zpp test build files
 zpp/test-cases/*/actual.asm
 zpp/test-cases/*/actual.hex
 zpp/test-cases/*/expected.hex
