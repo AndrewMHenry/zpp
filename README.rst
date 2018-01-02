@@ -5,7 +5,7 @@ MOTIVATION
 
 ``spasm`` is pretty nice, but it doesn't have built-in support for declaring
 global variables.  It's easy enough to get around this with ``#define``
-edirectives, but a low recursion limit makes this difficult to do cleanly.
+directives, but a low recursion limit makes this difficult to do cleanly.
 Since there doesn't seem to be a portable alternative to ``spasm`` that has
 the features I want, my alternatives are
 
